@@ -41,4 +41,9 @@ def upload_file(file_name, bucket_name, object_name=None):
 
 if __name__ == '__main__':
     #TODO: Write your load code here (remove pass first)
-    pass
+    files = ['tests/data/survey_dataset.csv', 'tests/data/annual_salary_adjusted_by_location_and_age.csv', 'tests/data/annual_salary_adjusted_by_location_and_education.csv']
+    bucket = "ist356yournetid"
+    for file in files:
+        obj = file.replace('tests/data/', '')
+        upload_file(file, bucket, obj)
+
