@@ -1,7 +1,7 @@
 # Reflection
 
-Student Name:  name
-Sudent Email:  email
+Student Name:  Charles Fleckenstein
+Sudent Email:  cfflecke@syr.edu
 
 ## Instructions
 
@@ -23,3 +23,4 @@ Examples:
 
 `--- Reflection Below This Line ---`
 
+I learned how creat a data pipeline and how to seperate the steps of it. I found the extract part particularly helpful because I always struggled with extracting files. It was a little confusing at times beacuse the instructions were unclear and i think copilot was stealing code from the solutions files. But the load.py was a little confusign for me so that took a second.
