@@ -5,13 +5,13 @@ import pandaslib as pl
 # TODO: Write your transformation code here
 
 # read states and survery data
-survey = pd.read_csv('tests/data/survey.csv')
-states = pd.read_csv('tests/data/states.csv')
+survey = pd.read_csv('cache/survey.csv')
+states = pd.read_csv('cache/states.csv')
 
 #unique year from survey data
 year_list = []
 for year in survey['year'].unique():
-    col = pd.read_csv(f'tests/data/col_{year}.csv')
+    col = pd.read_csv(f'cache/col_{year}.csv')
     year_list.append(col)
 #combine all col data into one dataframe
 col_data = pd.concat(year_list, ignore_index=True)
@@ -29,8 +29,8 @@ combined["_annual_salary_cleaned"] = combined["What is your annual salary? (You'
 #adjust salary
 combined['_annual_salary_adjusted'] = combined.apply(lambda row: row["_annual_salary_cleaned"] * (100 / row['Cost of Living Index']), axis=1)
 #save to csv
-combined.to_csv('tests/data/survey_dataset.csv', index=False)
+combined.to_csv('cache/survey_dataset.csv', index=False)
 #pivot table  salary location and age
-combined.pivot_table(index='_full_city', columns='How old are you?', values='_annual_salary_adjusted', aggfunc='mean').to_csv('tests/data/annual_salary_adjusted_by_location_and_age.csv')
+combined.pivot_table(index='_full_city', columns='How old are you?', values='_annual_salary_adjusted', aggfunc='mean').to_csv('cache/annual_salary_adjusted_by_location_and_age.csv')
 #pivot table salary location education
-combined.pivot_table(index='_full_city', columns='What is your highest level of education completed?', values='_annual_salary_adjusted', aggfunc='mean').to_csv('tests/data/annual_salary_adjusted_by_location_and_education.csv')
+combined.pivot_table(index='_full_city', columns='What is your highest level of education completed?', values='_annual_salary_adjusted', aggfunc='mean').to_csv('cache/annual_salary_adjusted_by_location_and_education.csv')
